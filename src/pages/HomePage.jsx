@@ -38,7 +38,6 @@ export function Home() {
       <h1>Home Page</h1>
       <AuthorList
         authors={authors}
-        // onDoubleClick={handleDoubleClickTodo}
       />
     </>
   );
