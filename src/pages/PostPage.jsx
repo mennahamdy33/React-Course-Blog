@@ -2,12 +2,20 @@ import { useLocation } from "react-router";
 import {useState, useEffect} from 'react';
 
 export function CommentList({ comments }) {
+   var i = 40
     return (
-      <ul>
-        {comments.map((comment) => (
-          <CommentItem value={comment} />
+      <div>
+      <table className="table">
+        <tbody>
+      {comments.map((comment) => (
+        
+
+ <tr className="innerbox" style={{ backgroundColor:`rgb(128,${i+=20}, 128)`}} ><td> {<CommentItem value={comment} /> }</td></tr>
         ))}
-      </ul>
+        </tbody>
+      </table>
+        
+      </div>
     );
   }
   
@@ -15,11 +23,12 @@ export function CommentList({ comments }) {
     return (
       <>
         <li>
+
         name: {value.name}
         <br/>  
         email: {value.email}
         <br/>  
-        body: {value.body}
+        <b>body: </b>{value.body}
           
         </li>
       </>
@@ -37,8 +46,12 @@ export function Post(){
   
     console.log(comments);
     return (<>
-    <h1>Post Page: {data.state.value.title} </h1>
-    <p>post body: {data.state.value.body} </p>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <h3 style={{color:'white'}}>{data.state.value.title}</h3></nav>
+         <div className="postbody">
+         <h2>{data.state.value.body} </h2>
+         </div>
     <h2>comments:</h2>
     <CommentList
         comments={comments}

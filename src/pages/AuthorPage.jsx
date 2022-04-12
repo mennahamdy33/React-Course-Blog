@@ -4,11 +4,21 @@ import { Link } from "react-router-dom";
 
 export function PostList({ posts }) {
     return (
-      <ul>
+      <div className="row">
+      <div className="col-3">
+
+      </div>
+      <div className="col">
+      <h2>Posts</h2>
         {posts.map((post) => (
+          
+          <div className="hov inner-box">{
           <PostItem value={post} />
+                              }
+          </div>
         ))}
-      </ul>
+      </div>
+      </div>
     );
   }
   
@@ -20,7 +30,7 @@ export function PostList({ posts }) {
             state={{
               value,
             }}
-            >{value.title}</Link>
+            style={{ textDecoration: 'none',color:'white'}}>{value.title}</Link>
         </li>
       </>
     );
@@ -37,16 +47,43 @@ export function Author(props){
   
     console.log(posts);
     return (<>
-    <h1>Author Page: {data.state.value.name} </h1>
-    <p>Author email: {data.state.value.email} </p>
-    <p>Author phone: {data.state.value.phone} </p>
-    <p>Author website: {data.state.value.website} </p>    
-    <p>Author company: {data.state.value.company.name} </p>
-    <h2>Posts:</h2>
-    <PostList
-        posts={posts}
-        
-      />
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <h1 style={{color:'white'}}>{data.state.value.name} </h1> </nav>
+    <div >
+    <table className="table">
+    <thead>
+    <th>
+    E-mail
+    </th>
+    <th>
+    Phone
+    </th>
+    <th>
+    website
+    </th>
+    <th>
+    company
+    </th>
+    </thead>
+    <tbody>
+    <tr>
+     <td>{data.state.value.email} </td> 
+    <td>{data.state.value.phone} </td>
+    <td>{data.state.value.website} </td>    
+    <td>{data.state.value.company.name} </td>
+    </tr>
+    </tbody>
+    
+    </table>
+    </div>
+    <div > 
+    
+    
+     <PostList
+     posts={posts}
+     
+     />
+    </div>
     </>
     );
     }
